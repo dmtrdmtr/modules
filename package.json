@@ -24,6 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "compile": "NODE_ENV=production babel index.es6 --out-file index.js --presets=babel-preset-react-app",
+    "compile-src": "NODE_ENV=production babel src --out-dir lib --copy-files --presets=babel-preset-react-app --plugins transform-regenerator",
+    "postinstall": "npm run compile & npm run compile-src"
   }
 }
