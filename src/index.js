@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
 import createStore from './store/createStore';
-import LoginForm from './components/Login';
+import SetPassword from './components/SetPassword';
 
 const store = createStore();
 
@@ -11,7 +11,7 @@ class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <LoginForm url="/some" />
+                <SetPassword url="/some" />
             </Provider>
         );
     }

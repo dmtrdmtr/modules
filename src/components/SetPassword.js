@@ -2,11 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import validate from 'redux-validate';
 import connect from 'react-redux/lib/connect/connect';
-import {reduxForm, change, Field, propTypes as formPropTypes} from 'redux-form';
+import { Field, reduxForm, propTypes as formPropTypes } from 'redux-form';
 import cond from 'ramda/src/cond';
-import path from 'ramda/src/path';
 import assoc from 'ramda/src/assoc';
-import { LOGIN, PREFIX } from '../constants/actions';
+import { SET_PASSWORD, PREFIX } from '../constants/actions';
 import { createCustomAction } from '../utils/redux';
 import { required, email, password } from '../utils/validators';
 import Input from '../form/Input';
@@ -16,24 +15,16 @@ const schema = {
     password: cond([required, password])
 };
 
-class LoginForm extends Component {
+class SetPasswordForm extends Component {
 
-    componentWillReceiveProps = next => {
-        const { dispatch, captcha } = this.props;
-
-        if (next.captcha !== captcha) {
-            dispatch(change(this.props.form, 'code', null));
-        }
-    };
-    
     render() {
-        const { handleSubmit, captcha } = this.props;
+        const { handleSubmit, meta } = this.props;
 
         return (
             <form onSubmit={handleSubmit} noValidate>
                 <label>
                     email
-                    <Field name='email'
+                    <Field name='login'
                            component={Input}
                            type='email'
                            placeholder='Введите email' />
@@ -45,39 +36,37 @@ class LoginForm extends Component {
                            type='password'
                            placeholder='Введите пароль' />
                 </label>
-                { captcha &&
-                <div>
-                    <Field name='code'
-                           component={Input}
-                           type='text' />
-                    <img alt="captcha" src={`data:image/png;base64,${captcha}`} />
-                </div> }
-                <button type='submit'>Войти</button>
+
+                {meta.error &&
+                    <div className="text-danger">{meta.error.message}</div>
+                }
+
+                <button disabled={meta.pending}>send</button>
             </form>
         );
     }
 }
 
-LoginForm.propTypes = {
+SetPasswordForm.propTypes = {
     ...formPropTypes,
     url: PropTypes.string.isRequired
 };
 
-LoginForm = reduxForm({
-    form: PREFIX + 'login',
+SetPasswordForm = reduxForm({
+    form: PREFIX + 'SetPasswordForm',
     validate: validate(schema)
-})(LoginForm);
+})(SetPasswordForm);
 
 const inject = (state) => ({
     initialValues: {
-        email: '',
+        login: '',
         password: ''
     },
-    captcha: path(['error', 'data', 'code'], state.modules.meta.login) || null
+    meta: state.modules.meta.setPassword
 });
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({
-    onSubmit: createCustomAction(LOGIN, [ assoc('url', props.url) ])
+    onSubmit: createCustomAction(SET_PASSWORD, [ assoc('url', props.url) ])
 }, dispatch);
 
-export default connect(inject, mapDispathToProps)(LoginForm);
+export default connect(inject, mapDispathToProps)(SetPasswordForm);
