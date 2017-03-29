@@ -5,9 +5,10 @@ import connect from 'react-redux/lib/connect/connect';
 import { Field, reduxForm, propTypes as formPropTypes } from 'redux-form';
 import cond from 'ramda/src/cond';
 import compose from 'ramda/src/compose';
+import assoc from 'ramda/src/assoc';
 import { sendRecoveryEmail, PREFIX, asReset } from '../actions';
 import { required, email } from '../utils/validators';
-import Input from '../form/Input';
+import {Input} from '../form/Input';
 
 const schema = {
     email: cond([required, email])
@@ -15,7 +16,9 @@ const schema = {
 
 class RecoveryForm extends Component {
 
-    componentWillUnmount = this.props.clearMeta;
+    componentWillUnmount() {
+        this.props.clearMeta({});
+    }
 
     render() {
         const { handleSubmit, meta } = this.props;
@@ -30,7 +33,7 @@ class RecoveryForm extends Component {
                            placeholder='Введите email' />
                 </label>
                 <label>
-                    <Field name='url-with-token' component="input" style={{display: 'none'}} />
+                    <Field name='url-with-token' component={Input} style={{display: 'none'}} />
                 </label>
                 {meta.error &&
                 <div className="text-danger">{meta.error.message}</div>

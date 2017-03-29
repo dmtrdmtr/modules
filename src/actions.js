@@ -1,17 +1,19 @@
-import {createAction} from 'utils/redux';
+import {createAction} from './utils/redux';
 import evolve from 'ramda/src/evolve';
+import concat from 'ramda/src/concat';
+import __ from 'ramda/src/__';
 
-export const toError = action => `${action}_ERROR`;
-export const toRequest = action => `${action}_REQUEST`;
-export const toSuccess = action => `${action}_SUCCESS`;
-export const toReset = action => `${action}_RESET`;
+export const toError = concat(__, '_ERROR');
+export const toRequest = concat(__, '_REQUEST');
+export const toSuccess = concat(__, '_SUCCESS');
+export const toReset = concat(__, '_RESET');
 
 const setStatus = statusFn => evolve({ type: statusFn });
 
 export const asError = setStatus(toError);
 export const asRequest = setStatus(toRequest);
 export const asSuccess = setStatus(toSuccess);
-export const asReset = setStatus(toSuccess);
+export const asReset = setStatus(toReset);
 
 export const PREFIX = '@@experium-modules/';
 

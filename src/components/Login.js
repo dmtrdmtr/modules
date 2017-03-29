@@ -26,7 +26,9 @@ class LoginForm extends Component {
         }
     };
 
-    componentWillUnmount = this.props.clearMeta;
+    componentWillUnmount() {
+        this.props.clearMeta({});
+    }
     
     render() {
         const { handleSubmit, captcha } = this.props;

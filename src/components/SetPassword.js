@@ -17,7 +17,9 @@ const schema = {
 
 class SetPasswordForm extends Component {
 
-    componentWillUnmount = this.props.clearMeta;
+    componentWillUnmount() {
+        this.props.clearMeta({});
+    }
 
     render() {
         const { handleSubmit, meta } = this.props;

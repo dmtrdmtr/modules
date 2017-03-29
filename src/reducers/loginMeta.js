@@ -1,11 +1,10 @@
 import { LOGIN, toError, toSuccess, toRequest, toReset } from '../actions';
 
-export default function login(state = null, action) {
+export default function login(state = {}, action) {
     let meta = {};
     switch (action.type) {
         case toReset(LOGIN):
-            meta.error = null;
-            break;
+            return meta;
         case toRequest(LOGIN):
             meta.pending = true;
             break;

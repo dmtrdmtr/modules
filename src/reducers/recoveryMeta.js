@@ -1,11 +1,10 @@
 import { SEND_RECOVERY_EMAIL, toError, toSuccess, toRequest, toReset } from '../actions';
 
-export default function recovery(state = null, action) {
+export default function recovery(state = {}, action) {
     let meta = {};
     switch (action.type) {
         case toReset(SEND_RECOVERY_EMAIL):
-            meta.error = null;
-            break;
+            return meta;
         case toRequest(SEND_RECOVERY_EMAIL):
             meta.pending = true;
             break;

@@ -5,8 +5,7 @@ export default function passwordSetMetaReducer(state = {}, action) {
 
     switch (action.type) {
         case toReset(SET_PASSWORD):
-            meta.error = null;
-            break;
+            return meta;
         case toRequest(SET_PASSWORD):
             meta.pending = true;
             break;
