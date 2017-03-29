@@ -37,6 +37,8 @@ class SetPasswordForm extends Component {
                            placeholder='Введите пароль' />
                 </label>
 
+                {this.props.children}
+
                 {meta.error &&
                     <div className="text-danger">{meta.error.message}</div>
                 }

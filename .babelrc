@@ -1,13 +1,11 @@
 {
   "plugins": [
-    "babel-plugin-transform-runtime"
+    ["babel-plugin-transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }]
   ],
-  "env": {
-    "cjs": {
-      "presets": ["es2015", "react", "stage-2"]
-    },
-    "es": {
-      "presets": [["es2015", { "modules": false }], "react", "stage-2"]
-    }
-  }
+  "presets": ["es2015", "react", "stage-2"]
 }
