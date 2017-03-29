@@ -1,12 +1,12 @@
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-import R from 'ramda';
+import _regeneratorRuntime from 'babel-runtime/regenerator';
+import _toConsumableArray from 'babel-runtime/helpers/toConsumableArray';
 import { put, call } from 'redux-saga/effects';
 import pipe from 'ramda/src/pipe';
 import curry from 'ramda/src/curry';
+import curryN from 'ramda/src/curryN';
 import evolve from 'ramda/src/evolve';
 
-export var createAction = R.curryN(2, function (type) {
+export var createAction = curryN(2, function (type) {
     var payload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     return { type: type, payload: payload };
 });
@@ -31,9 +31,9 @@ var setStatus = function setStatus(statusFn) {
 
 export function createRequestGenerator(actionFn, provideCallFn) {
 
-    return regeneratorRuntime.mark(function httpRequestGenerator(action) {
+    return _regeneratorRuntime.mark(function httpRequestGenerator(action) {
         var requestAction, response, successAction, errorAction;
-        return regeneratorRuntime.wrap(function httpRequestGenerator$(_context) {
+        return _regeneratorRuntime.wrap(function httpRequestGenerator$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:

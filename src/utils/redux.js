@@ -1,10 +1,10 @@
-import R from 'ramda';
 import {put, call} from 'redux-saga/effects';
 import pipe from 'ramda/src/pipe';
 import curry from 'ramda/src/curry';
+import curryN from 'ramda/src/curryN';
 import evolve from 'ramda/src/evolve';
 
-export const createAction = R.curryN(2, (type, payload = null) => ({ type, payload }));
+export const createAction = curryN(2, (type, payload = null) => ({ type, payload }));
 
 export const createCustomAction = curry((type, transformers) => pipe(createAction(type), ...transformers));
 

@@ -1,0 +1,10 @@
+{
+  "name": "Login",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "''",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server"
+  }
+}
