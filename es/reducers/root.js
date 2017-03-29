@@ -7,9 +7,9 @@ export function getReducers() {
     return {
         modules: combineReducers({
             meta: combineReducers({
-                login,
-                setPassword
+                login: login,
+                setPassword: setPassword
             })
         })
-    }
+    };
 }

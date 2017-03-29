@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class NumberInput extends Component {
+export class NumberInput extends Component {
     componentWillUnmount() {
         const { onChange } = this.props.input;
 

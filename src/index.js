@@ -1,23 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { Provider } from 'react-redux';
-import createStore from './store/createStore';
-import SetPassword from './components/SetPassword';
+export {Login} from './components/Login';
+export {SetPassword} from './components/SetPassword';
+export {DateInput} from './form/DateInput';
+export {Input} from './form/Input';
+export {NumberInput} from './form/NumberInput';
+export {Radio} from './form/Radio';
+export {Select} from './form/Select';
+export {Textarea} from './form/Textarea';
 
-const store = createStore();
+export {getReducers} from './reducers/root';
+export {getSagas} from './sagas';
 
-class App extends React.Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <SetPassword url="/some" />
-            </Provider>
-        );
-    }
-}
+export * from './constants/actions';
 
-ReactDOM.render(
-  <App store={store} />,
-  document.getElementById('root')
-);
+import * as reduxUtils from './utils/redux';
+export const utils = reduxUtils;

@@ -6,7 +6,7 @@ import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 // import 'react-widgets/dist/css/react-widgets.css';
 // momentLocalizer(moment);
 
-export default class DateInput extends Component {
+export class DateInput extends Component {
     state = {
         isOpened: false
     };

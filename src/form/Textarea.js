@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 
-export default class Textarea extends Component {
+export class Textarea extends Component {
     componentWillUnmount() {
         const { onChange } = this.props.input;
 

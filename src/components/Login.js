@@ -9,7 +9,7 @@ import assoc from 'ramda/src/assoc';
 import { LOGIN, PREFIX } from '../constants/actions';
 import { createCustomAction } from '../utils/redux';
 import { required, email, password } from '../utils/validators';
-import Input from '../form/Input';
+import {Input} from '../form/Input';
 
 const schema = {
     email: cond([required, email]),
@@ -80,4 +80,4 @@ const mapDispathToProps = (dispatch, props) => bindActionCreators({
     onSubmit: createCustomAction(LOGIN, [ assoc('url', props.url) ])
 }, dispatch);
 
-export default connect(inject, mapDispathToProps)(LoginForm);
+export const Login = connect(inject, mapDispathToProps)(LoginForm)

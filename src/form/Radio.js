@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class Radio extends Component {
+export class Radio extends Component {
     componentWillUnmount() {
         const { onChange } = this.props.input;
 

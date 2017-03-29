@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import DropdownList from 'react-widgets/lib/DropdownList';
 
-export default class Select extends Component {
+export class Select extends Component {
     componentWillUnmount() {
         const { onChange } = this.props.input;
 
