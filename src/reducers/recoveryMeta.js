@@ -1,16 +1,16 @@
-import { LOGIN, toError, toSuccess, toRequest, toReset } from '../actions';
+import { SEND_RECOVERY_EMAIL, toError, toSuccess, toRequest, toReset } from '../actions';
 
-export default function login(state = null, action) {
+export default function recovery(state = null, action) {
     let meta = {};
     switch (action.type) {
-        case toReset(LOGIN):
+        case toReset(SEND_RECOVERY_EMAIL):
             meta.error = null;
             break;
-        case toRequest(LOGIN):
+        case toRequest(SEND_RECOVERY_EMAIL):
             meta.pending = true;
             break;
-        case toError(LOGIN):
-        case toSuccess(LOGIN):
+        case toError(SEND_RECOVERY_EMAIL):
+        case toSuccess(SEND_RECOVERY_EMAIL):
             meta.error = action.payload;
             meta.pending = false;
             break;

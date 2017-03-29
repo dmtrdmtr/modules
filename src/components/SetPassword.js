@@ -5,8 +5,8 @@ import connect from 'react-redux/lib/connect/connect';
 import { Field, reduxForm, propTypes as formPropTypes } from 'redux-form';
 import cond from 'ramda/src/cond';
 import assoc from 'ramda/src/assoc';
-import { SET_PASSWORD, PREFIX } from '../constants/actions';
-import { createCustomAction } from '../utils/redux';
+import compose from 'ramda/src/compose';
+import { setPassword, PREFIX, asReset } from '../actions';
 import { required, email, password } from '../utils/validators';
 import {Input} from '../form/Input';
 
@@ -16,6 +16,8 @@ const schema = {
 };
 
 class SetPasswordForm extends Component {
+
+    componentWillUnmount = this.props.clearMeta;
 
     render() {
         const { handleSubmit, meta } = this.props;
@@ -68,7 +70,8 @@ const inject = (state) => ({
 });
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({
-    onSubmit: createCustomAction(SET_PASSWORD, [ assoc('url', props.url) ])
+    onSubmit: compose(assoc('url', props.url), setPassword),
+    clearMeta: compose(asReset, setPassword)
 }, dispatch);
 
 export const SetPassword = connect(inject, mapDispathToProps)(SetPasswordForm);

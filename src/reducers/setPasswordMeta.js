@@ -1,15 +1,17 @@
-import { SET_PASSWORD } from '../constants/actions';
-import {errorType, successType, requestType} from '../utils/redux';
+import { SET_PASSWORD, toError, toSuccess, toRequest, toReset } from '../actions';
 
 export default function passwordSetMetaReducer(state = {}, action) {
     let meta = {};
 
     switch (action.type) {
-        case requestType(SET_PASSWORD):
+        case toReset(SET_PASSWORD):
+            meta.error = null;
+            break;
+        case toRequest(SET_PASSWORD):
             meta.pending = true;
             break;
-        case errorType(SET_PASSWORD):
-        case successType(SET_PASSWORD):
+        case toError(SET_PASSWORD):
+        case toSuccess(SET_PASSWORD):
             meta.error = action.payload;
             meta.pending = false;
             break;

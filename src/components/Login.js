@@ -6,8 +6,8 @@ import {reduxForm, change, Field, propTypes as formPropTypes} from 'redux-form';
 import cond from 'ramda/src/cond';
 import path from 'ramda/src/path';
 import assoc from 'ramda/src/assoc';
-import { LOGIN, PREFIX } from '../constants/actions';
-import { createCustomAction } from '../utils/redux';
+import compose from 'ramda/src/compose';
+import { login, PREFIX, asReset } from '../actions';
 import { required, email, password } from '../utils/validators';
 import {Input} from '../form/Input';
 
@@ -25,6 +25,8 @@ class LoginForm extends Component {
             dispatch(change(this.props.form, 'code', null));
         }
     };
+
+    componentWillUnmount = this.props.clearMeta;
     
     render() {
         const { handleSubmit, captcha } = this.props;
@@ -77,7 +79,8 @@ const inject = (state) => ({
 });
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({
-    onSubmit: createCustomAction(LOGIN, [ assoc('url', props.url) ])
+    onSubmit: compose(assoc('url', props.url), login),
+    clearMeta: compose(asReset, login)
 }, dispatch);
 
-export const Login = connect(inject, mapDispathToProps)(LoginForm)
+export const Login = connect(inject, mapDispathToProps)(LoginForm);
