@@ -1,6 +1,6 @@
 import {takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
-import {LOGIN, SET_PASSWORD, SEND_RECOVERY_EMAIL, login, setPassword, sendRecoveryEmail} from './actions';
+import {LOGIN, SET_PASSWORD, SEND_RECOVERY_EMAIL, PASSWORD_CONFIRM, login, setPassword, sendRecoveryEmail, passwordConfirm} from './actions';
 import {createRequestGenerator} from './utils/redux';
 
 export function getSagas() {
@@ -22,6 +22,12 @@ export function getSagas() {
         takeLatest(
             SEND_RECOVERY_EMAIL,
             createRequestGenerator(sendRecoveryEmail, ({url, payload}) => () => {
+                return axios.post(url, payload)
+            })
+        ),
+        takeLatest(
+            PASSWORD_CONFIRM,
+            createRequestGenerator(passwordConfirm, ({url, payload}) => () => {
                 return axios.post(url, payload)
             })
         )

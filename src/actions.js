@@ -20,7 +20,9 @@ export const PREFIX = '@@experium-modules/';
 export const LOGIN = PREFIX + 'LOGIN';
 export const SET_PASSWORD = PREFIX + 'SET_PASSWORD';
 export const SEND_RECOVERY_EMAIL = PREFIX + 'SEND_RECOVERY_EMAIL';
+export const PASSWORD_CONFIRM = PREFIX + 'PASSWORD_CONFIRM';
 
 export const login = createAction(LOGIN);
 export const setPassword = createAction(SET_PASSWORD);
 export const sendRecoveryEmail = createAction(SEND_RECOVERY_EMAIL);
+export const passwordConfirm = createAction(PASSWORD_CONFIRM);

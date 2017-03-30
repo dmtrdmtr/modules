@@ -26,9 +26,7 @@ class LoginForm extends Component {
         }
     };
 
-    componentWillUnmount() {
-        this.props.clearMeta({});
-    }
+    componentWillUnmount = this.props.clearMeta;
     
     render() {
         const { handleSubmit, captcha } = this.props;
@@ -73,10 +71,6 @@ LoginForm = reduxForm({
 })(LoginForm);
 
 const inject = (state) => ({
-    initialValues: {
-        email: '',
-        password: ''
-    },
     captcha: path(['error', 'data', 'code'], state.modules.meta.login) || null
 });
 

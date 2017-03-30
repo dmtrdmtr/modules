@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 
 import login from './loginMeta';
 import setPassword from './setPasswordMeta';
-import recoveryMeta from './recoveryMeta'
+import recovery from './recoveryMeta';
+import passwordConfirm from './passwordConfirmMeta';
 
 export function getReducers() {
     return {
@@ -10,7 +11,8 @@ export function getReducers() {
             meta: combineReducers({
                 login,
                 setPassword,
-                recoveryMeta
+                recovery,
+                passwordConfirm
             })
         })
     }

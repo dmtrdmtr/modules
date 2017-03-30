@@ -16,9 +16,7 @@ const schema = {
 
 class RecoveryForm extends Component {
 
-    componentWillUnmount() {
-        this.props.clearMeta({});
-    }
+    componentWillUnmount = this.props.clearMeta;
 
     render() {
         const { handleSubmit, meta } = this.props;
@@ -32,9 +30,6 @@ class RecoveryForm extends Component {
                            type='email'
                            placeholder='Введите email' />
                 </label>
-                <label>
-                    <Field name='url-with-token' component={Input} style={{display: 'none'}} />
-                </label>
                 {meta.error &&
                 <div className="text-danger">{meta.error.message}</div>
                 }
@@ -46,8 +41,7 @@ class RecoveryForm extends Component {
 
 RecoveryForm.propTypes = {
     ...formPropTypes,
-    onSubmit: PropTypes.func.isRequired,
-    getRecoveryUrl: PropTypes.func.isRequired
+    url: PropTypes.string.isRequired
 };
 
 RecoveryForm = reduxForm({
@@ -55,12 +49,8 @@ RecoveryForm = reduxForm({
     validate: validate(schema)
 })(RecoveryForm);
 
-const inject = ( {modules}, {getRecoveryUrl} ) => ({
-    initialValues: {
-        email: '',
-        'url-with-token': getRecoveryUrl()
-    },
-    meta: modules.meta.recoveryMeta
+const inject = ( {modules} ) => ({
+    meta: modules.meta.recovery
 });
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({

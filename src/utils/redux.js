@@ -1,8 +1,7 @@
 import {put, call} from 'redux-saga/effects';
-import curryN from 'ramda/src/curryN';
-import {asRequest, asError, asSuccess} from '../actions'
+import {asRequest, asError, asSuccess} from '../actions';
 
-export const createAction = curryN(2, (type, payload = null) => ({ type, payload }));
+export const createAction = (type) => (payload) => ({ type, payload });
 
 export function createRequestGenerator(actionFn, provideCallFn) {
     return function* httpRequestGenerator(action) {
