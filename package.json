@@ -38,6 +38,7 @@
     "example": "npm --prefix ./examples/$component install && npm --prefix ./examples/$component start",
     "example:login": "component=Login npm run example",
     "example:recovery": "component=Recovery npm run example",
+    "example:formComponents": "component=FormComponents npm run example",
     "example:passwordConfirm": "component=PasswordConfirm npm run example"
   }
 }

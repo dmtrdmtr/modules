@@ -51,7 +51,7 @@ export class DateInput extends Component {
                  onFocus={this.onFocus}>
                  <DateTimePicker initialView={initialView}
                                  finalView={finalView}
-                                 value={value}
+                                 value={value !== ''? new Date(value) : null}
                                  format={format}
                                  calendar={false}
                                  time={false}
