@@ -25,7 +25,7 @@ class RecoveryForm extends Component {
             <form onSubmit={handleSubmit} noValidate>
                 <label>
                     email
-                    <Field name='email'
+                    <Field name='login'
                            component={Input}
                            type='email'
                            placeholder='Введите email' />
