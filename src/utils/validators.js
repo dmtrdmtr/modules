@@ -9,7 +9,6 @@ import compose from 'ramda/src/compose';
 import test from 'ramda/src/test';
 import curry from 'ramda/src/curry';
 import whereEq from 'ramda/src/whereEq';
-import when from 'ramda/src/when';
 
 import {EMAIL} from '../constants/patterns';
 
