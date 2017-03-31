@@ -1,7 +1,12 @@
 import {put, call} from 'redux-saga/effects';
 import {asRequest, asError, asSuccess} from '../actions';
 
-export const createAction = (type) => (payload) => ({ type, payload });
+export const createAction = (type, staticPayload) => (payload = null) => {
+    return {
+        type,
+        payload: staticPayload || payload
+    };
+};
 
 export function createRequestGenerator(actionFn, provideCallFn) {
     return function* httpRequestGenerator(action) {
