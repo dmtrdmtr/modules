@@ -23,7 +23,7 @@ export class Login extends Component {
     static propTypes = {
         ...formPropTypes,
         url: PropTypes.string.isRequired
-    }
+    };
 
     componentWillReceiveProps = next => {
         const { dispatch, captcha } = this.props;
