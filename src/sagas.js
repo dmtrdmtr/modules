@@ -8,7 +8,7 @@ export function getSagas() {
         takeLatest(
             LOGIN,
             createRequestGenerator(login, ({url, payload}) => () => {
-                const {code, login: username, password} = payload;
+                const {code, email: username, password} = payload;
 
                 return axios.post(url, { code }, { auth: {username, password} })
             })
