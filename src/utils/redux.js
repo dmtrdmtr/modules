@@ -14,18 +14,18 @@ export const createAction = (type, staticPayload) => (payload = null) => {
 
 export function createRequestGenerator(actionFn, provideCallFn) {
     return function* httpRequestGenerator(action) {
-        actionFn = compose(
+        const composedActionFn = compose(
             merge(omit(['type', 'payload'], action)),
             actionFn
         );
 
         try {
-            yield put( asRequest(actionFn(null)) );
+            yield put( asRequest(composedActionFn(null)) );
             const response = yield call(provideCallFn(action));
-            yield put( asSuccess(actionFn(response)) );
+            yield put( asSuccess(composedActionFn(response)) );
             return { response };
         } catch(error) {
-            yield put( asError(actionFn(error)) );
+            yield put( asError(composedActionFn(error)) );
             return { error };
         }
     }
