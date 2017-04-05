@@ -31,9 +31,9 @@ export class DateInput extends Component {
     }
 
     onChange = date => {
-        const { input: { onChange }} = this.props;
+        const { input: { onChange }, dateFormat } = this.props;
 
-        onChange(date);
+        onChange(moment(date).format(dateFormat));
         this.onToggle();
     }
 
@@ -42,7 +42,7 @@ export class DateInput extends Component {
     }
 
     render() {
-        const { initialView, finalView, format, input: { value }, placeholder } = this.props;
+        const { initialView, finalView, viewFormat, dateFormat, input: { value }, placeholder } = this.props;
 
         return (
             <div ref='datepicker'
@@ -50,8 +50,8 @@ export class DateInput extends Component {
                  onFocus={this.onFocus}>
                  <DateTimePicker initialView={initialView}
                                  finalView={finalView}
-                                 value={value !== ''? moment(value, format).toDate() : null}
-                                 format={format}
+                                 value={value !== ''? moment(value, dateFormat).toDate() : null}
+                                 format={viewFormat}
                                  calendar={false}
                                  time={false}
                                  open={this.state.isOpened}
@@ -70,11 +70,13 @@ DateInput.propTypes = {
     initialView: PropTypes.string,
     finalView: PropTypes.string,
     placeholder: PropTypes.string,
-    format: PropTypes.string
+    viewFormat: PropTypes.string,
+    dateFormat: PropTypes.string
 };
 
 DateInput.defaultProps = {
     initialView: 'month',       // month, year, decade, century
     finalView: 'century',       // month, year, decade, century
-    format: 'DD MMMM YYYY'
+    viewFormat: 'DD MMMM YYYY',
+    dateFormat: 'DDMMYYYY'
 };
