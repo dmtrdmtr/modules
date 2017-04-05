@@ -1,10 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 
-// import moment from 'moment';
-// import momentLocalizer from 'react-widgets/lib/localizers/moment';
-// import 'react-widgets/dist/css/react-widgets.css';
-// momentLocalizer(moment);
+import moment from 'moment';
+import momentLocalizer from 'react-widgets/lib/localizers/moment';
+momentLocalizer(moment);
 
 export class DateInput extends Component {
     state = {
@@ -51,7 +50,7 @@ export class DateInput extends Component {
                  onFocus={this.onFocus}>
                  <DateTimePicker initialView={initialView}
                                  finalView={finalView}
-                                 value={value !== ''? new Date(value) : null}
+                                 value={value !== ''? moment(value, format).toDate() : null}
                                  format={format}
                                  calendar={false}
                                  time={false}
