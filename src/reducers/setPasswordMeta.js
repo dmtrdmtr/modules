@@ -9,9 +9,14 @@ export default function passwordSetMetaReducer(state = {}, action) {
         case toRequest(SET_PASSWORD):
             meta.pending = true;
             break;
-        case toError(SET_PASSWORD):
         case toSuccess(SET_PASSWORD):
+            meta.success = true;
+            meta.error = null;
+            meta.pending = false;
+            break;
+        case toError(SET_PASSWORD):
             meta.error = action.payload;
+            meta.success = false;
             meta.pending = false;
             break;
         default:

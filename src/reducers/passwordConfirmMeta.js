@@ -8,9 +8,14 @@ export default function passwordConfirm(state = {}, action) {
         case toRequest(PASSWORD_CONFIRM):
             meta.pending = true;
             break;
-        case toError(PASSWORD_CONFIRM):
         case toSuccess(PASSWORD_CONFIRM):
+            meta.success = true;
+            meta.error = null;
+            meta.pending = false;
+            break;
+        case toError(PASSWORD_CONFIRM):
             meta.error = action.payload;
+            meta.success = false;
             meta.pending = false;
             break;
         default:
