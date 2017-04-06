@@ -8,9 +8,14 @@ export default function recovery(state = {}, action) {
         case toRequest(SEND_RECOVERY_EMAIL):
             meta.pending = true;
             break;
-        case toError(SEND_RECOVERY_EMAIL):
         case toSuccess(SEND_RECOVERY_EMAIL):
+            meta.success = true;
+            meta.error = null;
+            meta.pending = false;
+            break;
+        case toError(SEND_RECOVERY_EMAIL):
             meta.error = action.payload;
+            meta.success = false;
             meta.pending = false;
             break;
         default:

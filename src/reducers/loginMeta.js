@@ -8,9 +8,14 @@ export default function login(state = {}, action) {
         case toRequest(LOGIN):
             meta.pending = true;
             break;
-        case toError(LOGIN):
         case toSuccess(LOGIN):
+            meta.success = true;
+            meta.error = null;
+            meta.pending = false;
+            break;
+        case toError(LOGIN):
             meta.error = action.payload;
+            meta.success = false;
             meta.pending = false;
             break;
         default:
