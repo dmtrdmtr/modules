@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {reduxForm, Field, propTypes as formPropTypes} from 'redux-form';
-import {Input, DateInput, NumberInput, Radio, Select, Textarea} from 'experium-modules';
+import {Input, MaskInput , DateInput, NumberInput, Radio, Select, Textarea} from 'experium-modules';
 
 import moment from 'moment';
 import momentLocalizer from 'react-widgets/lib/localizers/moment';
@@ -18,7 +18,13 @@ class ComponentsForm extends Component {
                 <label>
                     Input
                     <Field name='Input'
-                           component={Input}/>
+                           component={Input} />
+                </label>
+                <label>
+                    Masked Input
+                    <Field name='MaskInput'
+                           component={MaskInput}
+                           mask='+7(111)111-11-11' />
                 </label>
                 <label>
                     DateInput

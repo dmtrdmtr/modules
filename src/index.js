@@ -4,6 +4,7 @@ export {PasswordConfirm} from './components/PasswordConfirm';
 export {SetPassword} from './components/SetPassword';
 export {DateInput} from './form/DateInput';
 export {Input} from './form/Input';
+export {MaskInput} from './form/MaskInput';
 export {NumberInput} from './form/NumberInput';
 export {Radio} from './form/Radio';
 export {Select} from './form/Select';
