@@ -1,7 +1,6 @@
 {
   "name": "experium-modules",
   "main": "lib/index.js",
-  "jsnext:main": "es/index.js",
   "module": "./lib/index.js",
   "version": "0.1.0",
   "private": true,

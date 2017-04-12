@@ -1,4 +1,5 @@
-import { SET_PASSWORD, toError, toSuccess, toRequest, toReset } from '../actions';
+import { toError, toSuccess, toRequest, toReset } from '../actionHelpers';
+import { SET_PASSWORD } from '../actionTypes';
 
 export default function passwordSetMetaReducer(state = {}, action) {
     let meta = {};

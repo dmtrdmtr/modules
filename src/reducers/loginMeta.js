@@ -1,4 +1,5 @@
-import { LOGIN, toError, toSuccess, toRequest, toReset } from '../actions';
+import {toError, toSuccess, toRequest, toReset } from '../actionHelpers';
+import {LOGIN} from '../actionTypes';
 
 export default function login(state = {}, action) {
     let meta = {};

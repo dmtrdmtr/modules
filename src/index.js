@@ -1,3 +1,8 @@
+export * from './actions';
+export * from './actionTypes';
+export * from './actionHelpers';
+export * from './utils/doAction';
+
 export {Login} from './components/Login';
 export {Recovery} from './components/Recovery';
 export {PasswordConfirm} from './components/PasswordConfirm';
@@ -14,6 +19,5 @@ import * as validators from './utils/validators';
 export {getReducers} from './reducers/root';
 export {getSagas} from './sagas';
 
-export * from './actions';
 export {validators};
 export * from './utils/redux';

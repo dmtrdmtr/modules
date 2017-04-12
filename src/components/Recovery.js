@@ -3,15 +3,16 @@ import { bindActionCreators } from 'redux';
 import connect from 'react-redux/lib/connect/connect';
 import { reduxForm, propTypes as formPropTypes } from 'redux-form';
 import compose from 'ramda/src/compose';
-import assoc from 'ramda/src/assoc';
-import { sendRecoveryEmail, PREFIX, asReset } from '../actions';
+import { sendRecoveryEmail } from '../actions';
+import { asReset } from '../actionHelpers';
+import { PREFIX } from '../actionTypes';
 
 const mapStateToProps = ( {modules} ) => ({
     meta: modules.meta.recovery
 });
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({
-    onSubmit: compose(assoc('url', props.url), sendRecoveryEmail),
+    onSubmit: (payload) => sendRecoveryEmail(payload, {url: props.url}),
     clearMeta: compose(asReset, sendRecoveryEmail)
 }, dispatch);
 

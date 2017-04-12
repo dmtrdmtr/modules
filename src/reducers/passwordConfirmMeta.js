@@ -1,4 +1,5 @@
-import { PASSWORD_CONFIRM, toError, toSuccess, toRequest, toReset } from '../actions';
+import { toError, toSuccess, toRequest, toReset } from '../actionHelpers';
+import { PASSWORD_CONFIRM } from '../actionTypes';
 
 export default function passwordConfirm(state = {}, action) {
     let meta = {};

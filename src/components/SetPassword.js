@@ -4,11 +4,12 @@ import validate from 'redux-validate';
 import connect from 'react-redux/lib/connect/connect';
 import { Field, reduxForm, propTypes as formPropTypes } from 'redux-form';
 import cond from 'ramda/src/cond';
-import assoc from 'ramda/src/assoc';
 import compose from 'ramda/src/compose';
-import { setPassword, PREFIX, asReset } from '../actions';
+import { setPassword } from '../actions';
+import { asReset } from '../actionHelpers';
+import { PREFIX } from '../actionTypes';
 import { required, email, password } from '../utils/validators';
-import {Input} from '../form/Input';
+import { Input } from '../form/Input';
 
 const schema = {
     email: cond([required, email]),
@@ -66,7 +67,7 @@ const inject = (state) => ({
 });
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({
-    onSubmit: compose(assoc('url', props.url), setPassword),
+    onSubmit: (payload) => setPassword(payload, {url: props.url}),
     clearMeta: compose(asReset, setPassword)
 }, dispatch);
 

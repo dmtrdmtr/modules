@@ -1,4 +1,5 @@
-import { SEND_RECOVERY_EMAIL, toError, toSuccess, toRequest, toReset } from '../actions';
+import { toError, toSuccess, toRequest, toReset } from '../actionHelpers';
+import { SEND_RECOVERY_EMAIL } from '../actionTypes';
 
 export default function recovery(state = {}, action) {
     let meta = {};

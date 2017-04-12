@@ -2,13 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/lib/connect/connect';
 import { reduxForm, propTypes as formPropTypes } from 'redux-form';
-import assoc from 'ramda/src/assoc';
 import compose from 'ramda/src/compose';
 import dissoc from 'ramda/src/dissoc';
-import { passwordConfirm, PREFIX, asReset } from '../actions';
+import { passwordConfirm } from '../actions';
+import { asReset } from '../actionHelpers';
+import { PREFIX } from '../actionTypes';
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({
-    onSubmit: compose(assoc('url', props.url), passwordConfirm, dissoc('passwordConfirm')),
+    onSubmit: (payload) => {
+        payload = dissoc('passwordConfirm', payload);
+        return passwordConfirm(payload, {url: props.url})
+    },
     clearMeta: compose(asReset, passwordConfirm)
 }, dispatch);
 

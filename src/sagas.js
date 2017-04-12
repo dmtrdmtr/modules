@@ -1,35 +1,13 @@
-import {takeLatest} from 'redux-saga/effects';
-import axios from 'axios';
-import {LOGIN, SET_PASSWORD, SEND_RECOVERY_EMAIL, PASSWORD_CONFIRM, login, setPassword, sendRecoveryEmail, passwordConfirm} from './actions';
-import {createRequestGenerator} from './utils/redux';
+import { takeLatest } from 'redux-saga/effects';
+import { login, setPassword, sendRecoveryEmail, passwordConfirm } from './actions';
+import { LOGIN, SET_PASSWORD, SEND_RECOVERY_EMAIL, PASSWORD_CONFIRM } from './actionTypes';
+import { requestGenerator } from './utils/redux';
 
 export function getSagas() {
     return [
-        takeLatest(
-            LOGIN,
-            createRequestGenerator(login, ({url, payload}) => () => {
-                const {code, email: username, password} = payload;
-
-                return axios.post(url, { code }, { auth: {username, password} })
-            })
-        ),
-        takeLatest(
-            SET_PASSWORD,
-            createRequestGenerator(setPassword, ({url, payload}) => () => {
-                return axios.post(url, payload)
-            })
-        ),
-        takeLatest(
-            SEND_RECOVERY_EMAIL,
-            createRequestGenerator(sendRecoveryEmail, ({url, payload}) => () => {
-                return axios.post(url, payload)
-            })
-        ),
-        takeLatest(
-            PASSWORD_CONFIRM,
-            createRequestGenerator(passwordConfirm, ({url, payload}) => () => {
-                return axios.post(url, payload)
-            })
-        )
-    ]
+        takeLatest(LOGIN, requestGenerator, login),
+        takeLatest(SET_PASSWORD, requestGenerator, setPassword),
+        takeLatest(SEND_RECOVERY_EMAIL, requestGenerator, sendRecoveryEmail),
+        takeLatest(PASSWORD_CONFIRM, requestGenerator, passwordConfirm)
+    ];
 }
