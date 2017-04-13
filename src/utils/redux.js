@@ -3,23 +3,22 @@ import { asRequest, asError, asSuccess } from '../actionHelpers';
 
 import compose from 'ramda/src/compose';
 import merge from 'ramda/src/merge';
-import omit from 'ramda/src/omit';
 
 import { doAction } from './doAction';
 
 export function* requestGenerator(actionFn, action) {
-    const composedActionFn = compose(
-        merge(omit(['type', 'payload'], action)),
+    actionFn = compose(
+        merge({requestAction: action}),
         actionFn
     );
 
     try {
-        yield put( asRequest(composedActionFn(null)) );
+        yield put( asRequest(actionFn(null)) );
         const response = yield call(doAction(action));
-        yield put( asSuccess(composedActionFn(response)) );
+        yield put( asSuccess(actionFn(response)) );
         return { response };
     } catch(error) {
-        yield put( asError(composedActionFn(error)) );
+        yield put( asError(actionFn(error)) );
         return { error };
     }
 }
