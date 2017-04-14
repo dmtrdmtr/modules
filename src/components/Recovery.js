@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/lib/connect/connect';
 import { reduxForm, propTypes as formPropTypes } from 'redux-form';

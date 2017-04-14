@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Radio extends Component {
     componentWillUnmount() {
@@ -6,11 +7,11 @@ export class Radio extends Component {
 
         onChange('');
     }
-    
+
     onChange = e => {
         const { onChange } = this.props.input;
         const value = parseInt(e.target.value, 10) || 0;
-        
+
         onChange(value);
     }
 

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DropdownList from 'react-widgets/lib/DropdownList';
 
 export class Select extends Component {
@@ -7,7 +8,7 @@ export class Select extends Component {
 
         onChange('');
     }
-    
+
     onChange = value => {
         const { input: { onChange }, valueField } = this.props;
 
