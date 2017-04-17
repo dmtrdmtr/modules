@@ -11,7 +11,7 @@ import converge from 'ramda/src/converge';
 import prop from 'ramda/src/prop';
 import { toReset, toRequest, toSuccess, toError } from './actionHelpers';
 
-export default function createMetaReducer(actions) {
+export function createMetaReducer(actions) {
     const initialState = { get: {}, put: {}, post: {}, delete: {} };
 
     const actionSwitcher = map(([request, actionType]) => {
