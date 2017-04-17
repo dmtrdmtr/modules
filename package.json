@@ -3,6 +3,9 @@
   "main": "lib/index.js",
   "module": "./lib/index.js",
   "version": "0.1.0",
+  "bin": {
+    "publish-rollbar": "./bin/publishRollbarSourceMaps.js"
+  },
   "private": true,
   "devDependencies": {
     "axios": "^0.15.3",
@@ -43,6 +46,7 @@
     "redux-saga": "^0.14.3",
     "redux-validate": "^0.2.0",
     "rimraf": "^2.6.1",
+    "rollbar-browser": "^1.9.4",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   },
@@ -59,7 +63,8 @@
     "redux": "^3.6.0",
     "redux-form": "^6.5.0",
     "redux-saga": "^0.14.3",
-    "redux-validate": "^0.2.0"
+    "redux-validate": "^0.2.0",
+    "rollbar-browser": "^1.9.4"
   },
   "scripts": {
     "clean": "rimraf lib",
@@ -79,5 +84,9 @@
       "/node_modules/",
       "/__tests__/test-utils/"
     ]
+  },
+  "dependencies": {
+    "argv": "0.0.2",
+    "request": "^2.81.0"
   }
 }
