@@ -1,4 +1,4 @@
-import createMetaReducer from '../src/createMetaReducer';
+import { createMetaReducer } from '../src/createMetaReducer';
 import { toReset, toRequest, toSuccess, toError } from '../src/actionHelpers';
 
 const GET_ITEM = 'GET_ITEM';
