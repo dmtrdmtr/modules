@@ -1,5 +1,5 @@
 node_modules
+__tests__
 examples
-src
 .babelrc
-.npmignore
+reports

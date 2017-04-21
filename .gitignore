@@ -7,9 +7,11 @@ node_modules
 /coverage
 
 # production
-#lib
+/lib
+/dist
 
 # misc
+/reports
 .DS_Store
 .env
 npm-debug.log*
