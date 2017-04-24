@@ -6,7 +6,6 @@ export * from './utils/doAction';
 export {Login} from './components/Login';
 export {Recovery} from './components/Recovery';
 export {PasswordConfirm} from './components/PasswordConfirm';
-export {SetPassword} from './components/SetPassword';
 export {DateInput} from './form/DateInput';
 export {Input} from './form/Input';
 export {MaskInput} from './form/MaskInput';
