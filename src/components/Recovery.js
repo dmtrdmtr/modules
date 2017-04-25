@@ -9,7 +9,7 @@ import { asReset } from '../actionHelpers';
 import { PREFIX } from '../actionTypes';
 
 const mapStateToProps = ( {modules} ) => ({
-    meta: modules.meta.recovery
+    meta: modules.meta.recovery.post
 });
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({

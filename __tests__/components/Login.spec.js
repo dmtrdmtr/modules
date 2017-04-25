@@ -67,7 +67,7 @@ describe('Login Container', () => {
         const Container = wrapper.find(Login);
 
         const getLoginMeta = () =>
-            store.getState().modules.meta.login;
+            store.getState().modules.meta.login.post;
 
         Container.simulate('submit');
         const metaAfterSubmit = getLoginMeta();
@@ -75,7 +75,7 @@ describe('Login Container', () => {
 
         wrapper.unmount();
         const metaAfterUnmount = getLoginMeta();
-        expect(metaAfterUnmount).toEqual({});
+        expect(metaAfterUnmount).toEqual({error: false, pending: false, success: false});
     });
 
     it('render captcha', () => {

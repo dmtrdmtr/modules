@@ -53,7 +53,7 @@ describe('Recovery Container', () => {
         const Container = wrapper.find(Recovery);
 
         const getRecoveryMeta = () =>
-            store.getState().modules.meta.recovery;
+            store.getState().modules.meta.recovery.post;
 
         Container.simulate('submit');
         const metaAfterSubmit = getRecoveryMeta();
@@ -61,6 +61,6 @@ describe('Recovery Container', () => {
 
         wrapper.unmount();
         const metaAfterUnmount = getRecoveryMeta();
-        expect(metaAfterUnmount).toEqual({});
+        expect(metaAfterUnmount).toEqual({error: false, pending: false, success: false});
     });
 });

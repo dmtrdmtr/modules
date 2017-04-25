@@ -11,7 +11,7 @@ import { PREFIX } from '../actionTypes';
 import { Input } from '../form/Input';
 
 const mapStateToProps = (state) => ({
-    captcha: path(['error', 'data', 'code'], state.modules.meta.login) || null
+    captcha: path(['error', 'data', 'code'], state.modules.meta.login.post) || null
 });
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({

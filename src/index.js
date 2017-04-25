@@ -15,7 +15,7 @@ export {Select} from './form/Select';
 export {Textarea} from './form/Textarea';
 import * as validators from './utils/validators';
 
-export {getReducers} from './reducers/root';
+export {getReducers} from './reducers';
 export {getSagas} from './sagas';
 export {createMetaReducer} from './createMetaReducer';
 

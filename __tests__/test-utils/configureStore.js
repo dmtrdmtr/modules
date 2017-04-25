@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import {reducer as form} from 'redux-form';
 
 import { getSagas } from '../../src/sagas';
-import { getReducers } from '../../src/reducers/root';
+import { getReducers } from '../../src/reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 const middlewares = [sagaMiddleware];

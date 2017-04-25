@@ -56,7 +56,7 @@ describe('PasswordConfirm Container', () => {
         const Container = wrapper.find(PasswordConfirm);
 
         const getPasswordConfirmMeta = () =>
-            store.getState().modules.meta.passwordConfirm;
+            store.getState().modules.meta.passwordConfirm.post;
 
         Container.simulate('submit');
         const metaAfterSubmit = getPasswordConfirmMeta();
@@ -64,6 +64,6 @@ describe('PasswordConfirm Container', () => {
 
         wrapper.unmount();
         const metaAfterUnmount = getPasswordConfirmMeta();
-        expect(metaAfterUnmount).toEqual({});
+        expect(metaAfterUnmount).toEqual({error: false, pending: false, success: false});
     });
 });

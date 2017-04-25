@@ -3,6 +3,7 @@
   "main": "lib/index.js",
   "module": "./lib/index.js",
   "author": "Dmitry Kirpichenko <kirpichenko@experium.ru>",
+  "types": "index.d.ts",
   "version": "0.1.0",
   "bin": {
     "publish-rollbar": "./bin/publishRollbarSourceMaps.js"
@@ -47,6 +48,8 @@
     "redux-validate": "^0.2.0",
     "rimraf": "^2.6.1",
     "rollbar-browser": "^1.9.4",
+    "typescript": "^2.2.2",
+    "typescript-definition-tester": "^0.0.5",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   },
@@ -88,6 +91,14 @@
     ]
   },
   "dependencies": {
+    "@types/es6-promise": "*",
+    "@types/node": "*",
+    "@types/ramda": "types/npm-ramda",
+    "@types/react": "*",
+    "@types/react-maskedinput": "*",
+    "@types/react-redux": "*",
+    "@types/react-widgets": "*",
+    "@types/redux-form": "*",
     "argv": "0.0.2",
     "request": "^2.81.0"
   }

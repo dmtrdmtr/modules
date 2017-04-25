@@ -67,7 +67,6 @@ export class DateInput extends Component {
 DateInput.propTypes = {
     input: PropTypes.object,
     meta: PropTypes.object,
-    value: PropTypes.string,
     initialView: PropTypes.string,
     finalView: PropTypes.string,
     placeholder: PropTypes.string,
