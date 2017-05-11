@@ -20,8 +20,8 @@ describe('validators', () => {
             password: 'asdfasf'
         };
 
-        expect(validator(valuesWithoutPassword)).toEqual({ password: 'required' });
-        expect(validator(valuesWithEmptyPassword)).toEqual({ password: 'required' });
+        expect(validator(valuesWithoutPassword)).toEqual({ password: 'Это поле обязательно для заполнения' });
+        expect(validator(valuesWithEmptyPassword)).toEqual({ password: 'Это поле обязательно для заполнения' });
         expect(validator(valuesWithPassword)).toEqual({});
     });
 
@@ -37,11 +37,11 @@ describe('validators', () => {
         const emailWithoutFirstDomain = { email: 'alibaba@ya.' };
         const validEmail = { email: 'alibaba@ya.ru' };
 
-        expect(validator(emptyEmail)).toEqual({ email: 'email' });
-        expect(validator(emailWithoutDomainAndAt)).toEqual({ email: 'email' });
-        expect(validator(emailWithoutDomain)).toEqual({ email: 'email' });
-        expect(validator(emailWithoutUserName)).toEqual({ email: 'email' });
-        expect(validator(emailWithoutFirstDomain)).toEqual({ email: 'email' });
+        expect(validator(emptyEmail)).toEqual({ email: 'Вы ввели невалидный e-mail адрес' });
+        expect(validator(emailWithoutDomainAndAt)).toEqual({ email: 'Вы ввели невалидный e-mail адрес' });
+        expect(validator(emailWithoutDomain)).toEqual({ email: 'Вы ввели невалидный e-mail адрес' });
+        expect(validator(emailWithoutUserName)).toEqual({ email: 'Вы ввели невалидный e-mail адрес' });
+        expect(validator(emailWithoutFirstDomain)).toEqual({ email: 'Вы ввели невалидный e-mail адрес' });
         expect(validator(validEmail)).toEqual({});
     });
 
@@ -55,9 +55,9 @@ describe('validators', () => {
         const tooLongPassword = { password: 'qwertyqwerty123456' };
         const validPassword = { password: 'qwerty1234' };
 
-        expect(validator(emptyPassword)).toEqual({ password: 'password' });
-        expect(validator(tooShortPassword)).toEqual({ password: 'password' });
-        expect(validator(tooLongPassword)).toEqual({ password: 'password' });
+        expect(validator(emptyPassword)).toEqual({ password: 'Пароль должен содержать от 6 до 15 символов' });
+        expect(validator(tooShortPassword)).toEqual({ password: 'Пароль должен содержать от 6 до 15 символов' });
+        expect(validator(tooLongPassword)).toEqual({ password: 'Пароль должен содержать от 6 до 15 символов' });
         expect(validator(validPassword)).toEqual({});
     });
 });
