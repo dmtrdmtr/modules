@@ -16,6 +16,7 @@ export class Input extends Component {
             <div className={classNames('input', {'error': invalid && submitFailed})}>
                 <input {...input}
                        type={type}
+                       className="form-control"
                        placeholder={placeholder} />
                 <div>{submitFailed && error}</div>
             </div>

@@ -61,7 +61,7 @@ class Captcha extends Component {
         }
 
         return (
-            <div>
+            <div className="captcha">
                 <Field name='code'
                        component={Input}
                        type='text' />
