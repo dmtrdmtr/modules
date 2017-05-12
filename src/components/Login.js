@@ -10,48 +10,65 @@ import { asReset } from '../actionHelpers';
 import { PREFIX } from '../actionTypes';
 import { Input } from '../form/Input';
 
-const mapStateToProps = (state) => ({
-    captcha: path(['error', 'data', 'code'], state.modules.meta.login.post) || null
-});
+const LOGIN_FORM_NAME = PREFIX + 'login';
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({
     onSubmit: (payload) => login(payload, {url: props.url}),
     clearMeta: compose(asReset, login)
 }, dispatch);
 
-@connect(mapStateToProps, mapDispathToProps)
-@reduxForm({form: PREFIX + 'login'})
+@connect(null, mapDispathToProps)
+@reduxForm({form: LOGIN_FORM_NAME})
 export class Login extends Component {
     static propTypes = {
         ...formPropTypes,
         url: PropTypes.string.isRequired
     };
 
-    componentWillReceiveProps = next => {
-        const { dispatch, captcha } = this.props;
-
-        if (next.captcha !== captcha) {
-            dispatch(change(this.props.form, 'code', null));
-        }
-    };
-
     componentWillUnmount = this.props.clearMeta;
 
     render() {
-        const { handleSubmit, captcha, children } = this.props;
+        const { handleSubmit, children } = this.props;
 
         return (
             <form onSubmit={handleSubmit} noValidate>
                 {children}
-
-                { captcha &&
-                <div>
-                    <Field name='code'
-                           component={Input}
-                           type='text' />
-                    <img alt="captcha" src={`data:image/png;base64,${captcha}`} />
-                </div> }
             </form>
         );
     }
 }
+
+
+const mapStateToProps = (state) => ({
+    captcha: path(['error', 'data', 'code'], state.modules.meta.login.post) || null
+});
+
+@connect(mapStateToProps)
+class Captcha extends Component {
+    componentWillReceiveProps = next => {
+        const { captcha, dispatch } = this.props;
+
+        if (next.captcha !== captcha) {
+            dispatch(change(LOGIN_FORM_NAME, 'code', null));
+        }
+    };
+
+    render() {
+        const {captcha} = this.props;
+
+        if (!captcha) {
+            return null;
+        }
+
+        return (
+            <div>
+                <Field name='code'
+                       component={Input}
+                       type='text' />
+                <img alt="captcha" src={`data:image/png;base64,${captcha}`} />
+            </div>
+        );
+    }
+};
+
+Login.Captcha = Captcha;

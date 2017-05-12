@@ -19,6 +19,7 @@ const setup = (props = {}) => {
                 <Field component="input" type="text" name="email" />
                 <Field component="input" type="password" name="password" />
                 <button type='submit'>Отправить</button>
+                <Login.Captcha />
             </Login>
         </Provider>
     );
