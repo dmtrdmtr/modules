@@ -80,7 +80,15 @@ interface IAction<P, A, SP> {
 type Action = IAction<any, any, any>;
 type ActionCreator<SP> = <P, A>(payload?: P, attrs?: A) => IAction<P, A, SP>;
 
-export const createAction: <SP = any>(type: string, staticPayload?: SP) => ActionCreator<SP>;
+interface IActionCreator<SP> {
+    <P, A>(payload?: P, attrs?: A): IAction<P, A, SP>,
+    error: ActionCreator<SP>,
+    request: ActionCreator<SP>,
+    success: ActionCreator<SP>,
+    reset: ActionCreator<SP>,
+}
+
+export const createAction: <SP = any>(type: string, staticPayload?: SP) => IActionCreator<SP>;
 
 type StringFnHelper = (str: string) => string;
 
@@ -88,13 +96,6 @@ export const toError: StringFnHelper;
 export const toRequest: StringFnHelper;
 export const toSuccess: StringFnHelper;
 export const toReset: StringFnHelper;
-
-type StatusSetter<T extends string> = (type: T) => any;
-
-export const asError: StatusSetter<string>;
-export const asRequest: StatusSetter<string>;
-export const asSuccess: StatusSetter<string>;
-export const asReset: StatusSetter<string>;
 
 export const login: ActionCreator<N>;
 export const setPassword: ActionCreator<N>;

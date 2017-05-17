@@ -13,16 +13,15 @@ const test = M.createAction(ACTION);
 test();
 test({ payload: { id: 3 }});
 test({ payload: { name: 'test' }, attrs: { id: 1 }});
+test.error();
+test.request();
+test.success();
+test.reset();
 
 const toErrorAction = M.toError(M.SET_PASSWORD);
 const toRequestAction = M.toRequest(M.SEND_RECOVERY_EMAIL);
 const toSuccessAction = M.toSuccess(M.PASSWORD_CONFIRM);
 const toResetAction = M.toReset(M.LOGIN);
-
-const asErrorAction = M.asError(M.SET_PASSWORD);
-const asRequestAction = M.asRequest(M.SEND_RECOVERY_EMAIL);
-const asSuccessAction = M.asSuccess(M.PASSWORD_CONFIRM);
-const asResetAction = M.asReset(M.LOGIN);
 
 M.login();
 M.setPassword();

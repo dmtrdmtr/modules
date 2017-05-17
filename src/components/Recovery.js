@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/lib/connect/connect';
 import { reduxForm, propTypes as formPropTypes } from 'redux-form';
-import compose from 'ramda/src/compose';
 import { sendRecoveryEmail } from '../actions';
-import { asReset } from '../actionHelpers';
 import { PREFIX } from '../actionTypes';
 
 const mapStateToProps = ( {modules} ) => ({
@@ -14,7 +12,7 @@ const mapStateToProps = ( {modules} ) => ({
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({
     onSubmit: (payload) => sendRecoveryEmail(payload, {url: props.url}),
-    clearMeta: compose(asReset, sendRecoveryEmail)
+    clearMeta: sendRecoveryEmail.reset
 }, dispatch);
 
 @connect(mapStateToProps, mapDispathToProps)

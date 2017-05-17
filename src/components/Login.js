@@ -4,9 +4,7 @@ import { bindActionCreators } from 'redux';
 import connect from 'react-redux/lib/connect/connect';
 import {reduxForm, change, Field, propTypes as formPropTypes} from 'redux-form';
 import path from 'ramda/src/path';
-import compose from 'ramda/src/compose';
 import { login } from '../actions';
-import { asReset } from '../actionHelpers';
 import { PREFIX } from '../actionTypes';
 import { Input } from '../form/Input';
 
@@ -14,7 +12,7 @@ const LOGIN_FORM_NAME = PREFIX + 'login';
 
 const mapDispathToProps = (dispatch, props) => bindActionCreators({
     onSubmit: (payload) => login(payload, {url: props.url}),
-    clearMeta: compose(asReset, login)
+    clearMeta: login.reset
 }, dispatch);
 
 @connect(null, mapDispathToProps)
