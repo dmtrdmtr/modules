@@ -1,11 +1,11 @@
 import R from 'ramda';
-import validate from 'redux-validate';
+import { validate } from '../../src/validator';
 import { required, email, password } from '../../src/utils/validators';
 
 describe('validators', () => {
     it('required validator', () => {
         const validator = validate({
-            password: R.cond([required])
+            password: required
         });
 
         const valuesWithoutPassword = {
@@ -27,7 +27,7 @@ describe('validators', () => {
 
     it('email validator', () => {
         const validator = validate({
-            email: R.cond([email])
+            email: email
         });
 
         const emptyEmail = { email: '' };
@@ -47,7 +47,7 @@ describe('validators', () => {
 
     it('password validator', () => {
         const validator = validate({
-            password: R.cond([password])
+            password: password
         });
 
         const emptyPassword = { password: '' };

@@ -1363,7 +1363,7 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://npm.dev.experium.net/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
-"console-polyfill@github:rollbar/console-polyfill#eab6ff9d2b7597fc2f259baa18100556bdb94dbe":
+console-polyfill@rollbar/console-polyfill#eab6ff9d2b7597fc2f259baa18100556bdb94dbe:
   version "0.2.3"
   resolved "https://codeload.github.com/rollbar/console-polyfill/tar.gz/eab6ff9d2b7597fc2f259baa18100556bdb94dbe"
 
@@ -2661,13 +2661,9 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://npm.dev.experium.net/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
-iconv-lite@0.4.13:
+iconv-lite@0.4.13, iconv-lite@~0.4.13:
   version "0.4.13"
   resolved "https://npm.dev.experium.net/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
-
-iconv-lite@~0.4.13:
-  version "0.4.16"
-  resolved "https://npm.dev.experium.net/iconv-lite/-/iconv-lite-0.4.16.tgz#65de3beeb39e2960d67f049f1634ffcbcde9014b"
 
 ieee754@^1.1.4:
   version "1.1.8"
@@ -3432,7 +3428,7 @@ lodash@^3.6.0:
   version "3.10.1"
   resolved "https://npm.dev.experium.net/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://npm.dev.experium.net/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -4249,12 +4245,6 @@ redux-mock-store@^1.2.2:
 redux-saga@^0.14.3:
   version "0.14.8"
   resolved "https://npm.dev.experium.net/redux-saga/-/redux-saga-0.14.8.tgz#ad01afabe02ec41a17df54e2e09aa236b30a7732"
-
-redux-validate@^0.2.0:
-  version "0.2.0"
-  resolved "https://npm.dev.experium.net/redux-validate/-/redux-validate-0.2.0.tgz#6797212c5c8211400377827b4b18ee2986cb75e6"
-  dependencies:
-    lodash "^4.6.1"
 
 redux@^3.6.0:
   version "3.6.0"
