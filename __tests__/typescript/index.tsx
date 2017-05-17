@@ -39,6 +39,8 @@ M.doAction(test());
 const emailValidation = cond([M.email, M.required]);
 const passwordValidation = cond([M.password, M.required]);
 
+M.validate({ name: [ () => {}, 'error'] })({ name: '' });
+
 M.requestGenerator(test, test());
 
 @reduxForm({ form: 'test' })

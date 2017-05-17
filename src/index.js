@@ -25,6 +25,7 @@ import * as validators from './utils/validators';
 export {getReducers} from './reducers';
 export {getSagas} from './sagas';
 export {createMetaReducer} from './createMetaReducer';
+export {validate} from './validator';
 
 export {validators};
 export * from './utils/redux';

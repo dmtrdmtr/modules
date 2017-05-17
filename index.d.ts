@@ -145,6 +145,8 @@ export const required: Validator;
 export const email: Validator;
 export const password: Validator;
 
+export const validate: (rules: any) => (values: any) => any;
+
 export function requestGenerator(actionFn: ActionCreator<N>, action: Action): IterableIterator<{response?: any, error?: any}>;
 
 interface IComponent {

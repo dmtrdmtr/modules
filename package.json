@@ -22,6 +22,7 @@
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-2": "^6.22.0",
     "classnames": "^2.2.5",
+    "deep-equal": "^1.0.1",
     "enzyme": "^2.8.0",
     "eslint": "^3.18.0",
     "eslint-config-react-app": "^0.6.2",
@@ -80,6 +81,7 @@
     "example:recovery": "component=Recovery npm run example",
     "example:formComponents": "component=FormComponents npm run example",
     "example:passwordConfirm": "component=PasswordConfirm npm run example",
+    "example:validation": "component=validation npm run example",
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "publish-npm": "npm version 0.1.$BUILD_NUMBER && npm publish"

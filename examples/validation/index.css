@@ -1,0 +1,8 @@
+.error label,
+.error span {
+    color: red;
+}
+    
+.error input {
+    border-color: red;
+}
