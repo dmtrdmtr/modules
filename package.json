@@ -88,7 +88,10 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/__tests__/test-utils/"
-    ]
+    ],
+    "collectCoverage": true,
+    "coverageDirectory": "reports",
+    "coverageReporters": ["cobertura"]
   },
   "dependencies": {
     "@types/es6-promise": "*",

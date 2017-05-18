@@ -34,6 +34,8 @@ node {
                             errors.push('tests failed')
                             echo "Tests exit with code ${status}"
                             error "${status}"
+                        } else {
+                            step([$class: 'CoberturaPublisher', autoUpdateHealth: true, autoUpdateStability: true, coberturaReportFile: 'reports/cobertura-coverage.xml', sourceEncoding: 'UTF_8'])
                         }
                     }
                 },
