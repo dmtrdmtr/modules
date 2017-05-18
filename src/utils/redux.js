@@ -1,4 +1,4 @@
-import { put, call } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 import { asRequest, asError, asSuccess } from '../actionHelpers';
 
 import compose from 'ramda/src/compose';
@@ -14,7 +14,7 @@ export function* requestGenerator(actionFn, action) {
 
     try {
         yield put( asRequest(actionFn(null)) );
-        const response = yield call(doAction(action));
+        const response = yield* doAction(action);
         yield put( asSuccess(actionFn(response)) );
         return { response };
     } catch(error) {

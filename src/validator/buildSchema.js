@@ -16,7 +16,9 @@ const wrapNestedValidator = validatorFn => {
     return (obj, path, model) => checkValidity(model)(obj, validatorFn.schema, path)
 };
 
+/* eslint-disable no-use-before-define */
 const buildSchema = rules => mapObjIndexed(createConditionOrRecall, rules);
+/* eslint-enable no-use-before-define */
 
 const createConditionOrRecall = cond([
     [is(Function), wrapNestedValidator],

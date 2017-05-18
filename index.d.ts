@@ -67,7 +67,6 @@ export function getSagas(): Effect[];
 
 export const PREFIX: string;
 export const LOGIN: string;
-export const SET_PASSWORD: string;
 export const SEND_RECOVERY_EMAIL: string;
 export const PASSWORD_CONFIRM: string;
 
@@ -88,7 +87,7 @@ interface IActionCreator<SP> {
     reset: ActionCreator<SP>,
 }
 
-export const createAction: <SP = any>(type: string, staticPayload?: SP) => IActionCreator<SP>;
+export const createAction: <SP>(type: string, staticPayload?: SP) => IActionCreator<SP>;
 
 type StringFnHelper = (str: string) => string;
 
@@ -98,7 +97,6 @@ export const toSuccess: StringFnHelper;
 export const toReset: StringFnHelper;
 
 export const login: ActionCreator<N>;
-export const setPassword: ActionCreator<N>;
 export const sendRecoveryEmail: ActionCreator<N>;
 export const passwordConfirm: ActionCreator<N>;
 
@@ -133,10 +131,12 @@ interface INoHandler<A extends Action> {
 }
 
 type Handler = (action: Action) => AxiosPromise;
+type GeneratorHandler = (action: Action) => IterableIterator<{response?: any, error?: any}>
 type Reject<A extends Action> = (action: A) => Promise<INoHandler<A>>;
 
 export const doAction: <A extends Action>(action: A) => () => AxiosPromise | Reject<A>;
 
+export const setGeneratorActionHandler: (type: string, handler: GeneratorHandler) => void;
 export const setActionHandler: (type: string, handler: Handler) => void;
 
 type Validator = [Pred<{}>, (v: {}) => {}];
@@ -158,5 +158,3 @@ export class Login extends Component<IComponent & Config<any, any, any>, {}> {}
 export class Recovery extends Component<IComponent & Config<any, any, any>, {}> {}
 
 export class PasswordConfirm extends Component<IComponent & Config<any, any, any>, {}> {}
-
-export class SetPassword extends Component<IComponent & Config<any, any, any>, {}> {}

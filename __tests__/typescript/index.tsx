@@ -18,13 +18,12 @@ test.request();
 test.success();
 test.reset();
 
-const toErrorAction = M.toError(M.SET_PASSWORD);
+const toErrorAction = M.toError(M.LOGIN);
 const toRequestAction = M.toRequest(M.SEND_RECOVERY_EMAIL);
 const toSuccessAction = M.toSuccess(M.PASSWORD_CONFIRM);
 const toResetAction = M.toReset(M.LOGIN);
 
 M.login();
-M.setPassword();
 M.sendRecoveryEmail();
 M.passwordConfirm();
 
@@ -33,7 +32,7 @@ const fullMeta = M.createMetaReducer({ get: ACTION, post: ACTION, put: ACTION, d
 
 const mail = M.EMAIL;
 
-M.setActionHandler(M.SET_PASSWORD, () => axios.post('/set-password'));
+M.setActionHandler(M.PASSWORD_CONFIRM, () => axios.post('/password-confirm'));
 M.doAction(test());
 
 const emailValidation = cond([M.email, M.required]);
@@ -103,7 +102,6 @@ class App extends React.Component<{}, {}> {
                     <M.Login url='/test' />
                     <M.Recovery url='/test' />
                     <M.PasswordConfirm url='/test' />
-                    <M.SetPassword url='/test' />
                 </div>
             </Provider>
         );
