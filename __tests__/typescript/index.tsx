@@ -29,6 +29,7 @@ M.passwordConfirm();
 
 const meta = M.createMetaReducer({ get: ACTION });
 const fullMeta = M.createMetaReducer({ get: ACTION, post: ACTION, put: ACTION, delete: ACTION });
+const metaActions = M.createMetaActionTypes(ACTION);
 
 const mail = M.EMAIL;
 
@@ -84,6 +85,21 @@ class Form extends React.Component<{}, {}> {
                       valueField='n'
                       textField='value'
                       options={[{ n: 1, value: '1' }, { n: 2, value: '2' }]} />
+               <label>Select</label>
+               <Field component={M.Load(M.Select)}
+                      name='Select'
+                      placeholder='Choose something'
+                      valueField='n'
+                      textField='value'
+                      getLoadUrl={(props: any) => props.loadName}
+                      loadName='dict' />
+               <label>Radio</label>
+               <Field component={M.Load(M.Radio)}
+                      name='Radio'
+                      valueField='n'
+                      textField='value'
+                      getLoadUrl={(props: any) => props.loadName}
+                      loadName='dict' />
                <label>Textarea</label>
                <Field component={M.Textarea}
                       name='Textarea'

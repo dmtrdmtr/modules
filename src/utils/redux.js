@@ -1,9 +1,8 @@
 import { put } from 'redux-saga/effects';
-import { asRequest, asError, asSuccess } from '../actionHelpers';
-
 import compose from 'ramda/src/compose';
 import merge from 'ramda/src/merge';
 
+import { asRequest, asError, asSuccess } from '../actionHelpers';
 import { doAction } from './doAction';
 
 export function* requestGenerator(actionFn, action) {

@@ -3,7 +3,7 @@ import { WrappedFieldProps, Config } from 'redux-form';
 import { DateTimePicker, SelectList } from 'react-widgets';
 import { MaskedInputProps } from 'react-maskedinput';
 import { Reducer } from 'redux';
-import { Effect } from 'redux-saga';
+import { Effect, Pattern, SagaIterator } from 'redux-saga';
 import { AxiosPromise } from 'axios';
 import { Pred } from 'ramda';
 
@@ -66,6 +66,7 @@ export function getReducers(): IReducers;
 export function getSagas(): Effect[];
 
 export const PREFIX: string;
+export const GET_DICTIONARY: string;
 export const LOGIN: string;
 export const SEND_RECOVERY_EMAIL: string;
 export const PASSWORD_CONFIRM: string;
@@ -122,6 +123,7 @@ interface IMetaReducer {
 
 export function createMetaReducer(actions: IMetaActionsDescription):
     <S>(state: S, action: Action) => S & IMetaReducer;
+export function createMetaActionTypes(actionType: string): string[];
 
 export const EMAIL: string;
 
@@ -148,10 +150,13 @@ export const password: Validator;
 export const validate: (rules: any) => (values: any) => any;
 
 export function requestGenerator(actionFn: ActionCreator<N>, action: Action): IterableIterator<{response?: any, error?: any}>;
+export function takeFirst<A extends Action>(pattern: any, storeBy: () => string, worker: any, ...rest: any[]): SagaIterator;
 
 interface IComponent {
     url: string
 }
+
+export const Load: <C>(component: C) => C;
 
 export class Login extends Component<IComponent & Config<any, any, any>, {}> {}
 

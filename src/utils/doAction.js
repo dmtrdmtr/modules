@@ -1,9 +1,12 @@
 import axios from 'axios';
-import { LOGIN, SEND_RECOVERY_EMAIL, PASSWORD_CONFIRM } from '../actionTypes';
+import { GET_DICTIONARY, LOGIN, SEND_RECOVERY_EMAIL, PASSWORD_CONFIRM } from '../actionTypes';
 
 import { call } from 'redux-saga/effects';
 
 const handlers = {
+    [GET_DICTIONARY]: function*({ attrs }) {
+        return yield call(axios.get, attrs.url);
+    },
     [LOGIN]: function*({attrs, payload}) {
         const {code, email: username, password} = payload;
         return yield call(axios.post, attrs.url, { code }, { auth: {username, password} });

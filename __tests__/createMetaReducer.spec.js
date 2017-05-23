@@ -1,4 +1,4 @@
-import { createMetaReducer } from '../src/createMetaReducer';
+import { createMetaReducer, createMetaActionTypes } from '../src/createMetaReducer';
 import { toReset, toRequest, toSuccess, toError } from '../src/actionHelpers';
 
 const GET_ITEM = 'GET_ITEM';
@@ -11,6 +11,20 @@ const reducer = createMetaReducer({
     post: POST_ITEM,
     put: PUT_ITEM,
     delete: DELETE_ITEM
+});
+
+describe('createMetaActionTypes', () => {
+    it('should return actions', () => {
+        const action = 'ANOTHER_ACTION';
+        const metaActions = [
+            toRequest(action),
+            toSuccess(action),
+            toError(action),
+            toReset(action)
+        ];
+
+        expect(createMetaActionTypes(action)).toEqual(metaActions);
+    });
 });
 
 describe('createMetaReducer', () => {

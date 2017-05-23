@@ -91,7 +91,9 @@
     ],
     "collectCoverage": true,
     "coverageDirectory": "reports",
-    "coverageReporters": ["cobertura"]
+    "coverageReporters": [
+      "cobertura"
+    ]
   },
   "dependencies": {
     "@types/es6-promise": "*",

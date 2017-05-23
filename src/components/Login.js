@@ -36,7 +36,6 @@ export class Login extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => ({
     captcha: path(['error', 'data', 'code'], state.modules.meta.login.post) || null
 });
