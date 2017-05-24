@@ -1,8 +1,8 @@
 import {mapObjIndexed, is, propOr} from 'ramda';
-import {isPlainObject} from '../utils/ramdaAdditions';
+import {isPlainObject, toArray} from '../utils/ramdaAdditions';
 
 const sameConditionForEvery = (condition, value) => {
-    return value.reduce((accum, _, i) => {
+    return toArray(value).reduce((accum, _, i) => {
         accum[i] = condition;
         return accum;
     }, {});
@@ -13,7 +13,7 @@ const checkValidity = model => {
         const value = propOr(null, key, obj);
         const valuePath = [key, ...path];
 
-        if (is(Array, value)) {
+        if (is(Array, condition)) {
             condition = sameConditionForEvery(condition[0], value);
         }
 

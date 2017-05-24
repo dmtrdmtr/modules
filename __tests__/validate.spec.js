@@ -31,6 +31,18 @@ describe('validate()', () => {
         expect( equal(result, errors) ).toBeTruthy();
     });
 
+    it('should correctly validate null value', () => {
+        const schema = {
+            items: [ {id: required} ]
+        };
+
+        const model = {items: null};
+        const errors = {items: {}};
+        const result = validate(schema)(model);
+
+        expect( equal(result, errors) ).toBeTruthy();
+    });
+
     describe('should validate values with validate schema like object with array of validators', () => {
         it('should handle first validator in array', () => {
             const schema = {
