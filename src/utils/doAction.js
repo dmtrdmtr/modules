@@ -3,19 +3,23 @@ import { GET_DICTIONARY, LOGIN, SEND_RECOVERY_EMAIL, PASSWORD_CONFIRM } from '..
 
 import { call } from 'redux-saga/effects';
 
+const unicodeToLatin = latinString => unescape(encodeURIComponent(latinString));
+
 const handlers = {
     [GET_DICTIONARY]: function*({ attrs }) {
         return yield call(axios.get, attrs.url);
     },
     [LOGIN]: function*({attrs, payload}) {
-        const {code, email: username, password} = payload;
+        const { code, email: username, password: unicodePassword } = payload;
+        const password = unicodeToLatin(unicodePassword);
         return yield call(axios.post, attrs.url, { code }, { auth: {username, password} });
     },
     [SEND_RECOVERY_EMAIL]: function*({attrs, payload}) {
         return yield call(axios.post, attrs.url, payload);
     },
     [PASSWORD_CONFIRM]: function*({attrs, payload}) {
-        return yield call(axios.post, attrs.url, payload);
+        const password = unicodeToLatin(payload.password);
+        return yield call(axios.post, attrs.url, { ...payload, password });
     }
 };
 
