@@ -3,6 +3,7 @@ import {merge, map, replace, always, evolve, compose, join} from 'ramda';
 
 const defaults = {
     getPayload: always(null),
+    environment: location.host,
     domains: ['.*?']
 };
 
@@ -31,7 +32,7 @@ export default function (options) {
             }
         },
         payload: {
-            environment: location.host,
+            environment: options.environment,
             client: {
                 javascript: {
                     source_map_enabled: true,
