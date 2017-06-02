@@ -9,9 +9,7 @@ const storeByRequestUrl = path(['requestAction', 'attrs', 'url']);
 const dictionaryReducer = (state = [], action) => action.payload || state;
 
 export const dictionariesReducer = createListReducer(
-    [
-        toSuccess(GET_DICTIONARY)
-    ],
+    [toSuccess(GET_DICTIONARY)],
     storeByRequestUrl,
     dictionaryReducer
 );

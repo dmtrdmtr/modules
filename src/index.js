@@ -14,6 +14,8 @@ export {Login} from './components/Login';
 export {Recovery} from './components/Recovery';
 export {PasswordConfirm} from './components/PasswordConfirm';
 export {Load} from './dictionaries/Load';
+export {uploader} from './documents/Document';
+export {uploadDocumentsSaga} from './documents/documentsSagas';
 export {DateInput} from './form/DateInput';
 export {Input} from './form/Input';
 export {MaskInput} from './form/MaskInput';

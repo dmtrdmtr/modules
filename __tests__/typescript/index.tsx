@@ -23,13 +23,20 @@ const toRequestAction = M.toRequest(M.SEND_RECOVERY_EMAIL);
 const toSuccessAction = M.toSuccess(M.PASSWORD_CONFIRM);
 const toResetAction = M.toReset(M.LOGIN);
 
+const { DOCUMENT_UPDATE, DOCUMENT_REMOVE, DOCUMENT_UPLOAD } = M;
+
+
+M.getDictionary();
 M.login();
 M.sendRecoveryEmail();
 M.passwordConfirm();
+M.documentUpdate();
+M.documentUpload();
+M.documentRemove();
 
 const meta = M.createMetaReducer({ get: ACTION });
 const fullMeta = M.createMetaReducer({ get: ACTION, post: ACTION, put: ACTION, delete: ACTION });
-const metaActions = M.createMetaActionTypes(ACTION);
+const metaActions = M.createMetaActionTypes([ACTION]);
 
 const storeById = path(['requestAction', 'payload']);
 const listReducer = M.createListReducer([M.toSuccess(ACTION)], storeById, meta);
@@ -107,6 +114,11 @@ class Form extends React.Component<{}, {}> {
                <Field component={M.Textarea}
                       name='Textarea'
                       placeholder='Your textarea text' />
+                <label>File upload</label>
+                <Field component={M.Upload(M.Input)}
+                       name='Input'
+                       type='file'
+                       placeholder='Uploader' />
             </form>
         );
     }

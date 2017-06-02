@@ -3,7 +3,7 @@ import { WrappedFieldProps, Config } from 'redux-form';
 import { DateTimePicker, SelectList } from 'react-widgets';
 import { MaskedInputProps } from 'react-maskedinput';
 import { Reducer } from 'redux';
-import { Effect, Pattern, SagaIterator } from 'redux-saga';
+import { Effect, SagaIterator } from 'redux-saga';
 import { AxiosPromise } from 'axios';
 import { Pred } from 'ramda';
 
@@ -70,6 +70,9 @@ export const GET_DICTIONARY: string;
 export const LOGIN: string;
 export const SEND_RECOVERY_EMAIL: string;
 export const PASSWORD_CONFIRM: string;
+export const DOCUMENT_UPDATE: string;
+export const DOCUMENT_REMOVE: string;
+export const DOCUMENT_UPLOAD: string;
 
 interface IAction<P, A, SP> {
     type: string,
@@ -97,9 +100,13 @@ export const toRequest: StringFnHelper;
 export const toSuccess: StringFnHelper;
 export const toReset: StringFnHelper;
 
+export const getDictionary: ActionCreator<N>;
 export const login: ActionCreator<N>;
 export const sendRecoveryEmail: ActionCreator<N>;
 export const passwordConfirm: ActionCreator<N>;
+export const documentUpdate: ActionCreator<N>;
+export const documentUpload: ActionCreator<N>;
+export const documentRemove: ActionCreator<N>;
 
 interface IMetaActionsDescription {
     get?: string,
@@ -125,7 +132,7 @@ export function createListReducer(take: string[], storeBy: <A>(action: A) => str
     <S>(state: S, action: Action) => S;
 export function createMetaReducer(actions: IMetaActionsDescription):
     <S>(state: S, action: Action) => S & IMetaReducer;
-export function createMetaActionTypes(actionType: string): string[];
+export function createMetaActionTypes(actionTypes: string | string[]): string[];
 
 export const EMAIL: string;
 
@@ -159,6 +166,7 @@ interface IComponent {
 }
 
 export const Load: <C>(component: C) => C;
+export const Upload: <C>(component: C) => C;
 
 export class Login extends Component<IComponent & Config<any, any, any>, {}> {}
 

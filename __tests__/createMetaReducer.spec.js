@@ -16,14 +16,17 @@ const reducer = createMetaReducer({
 describe('createMetaActionTypes', () => {
     it('should return actions', () => {
         const action = 'ANOTHER_ACTION';
-        const metaActions = [
+        const mockedMetaActions = [
             toRequest(action),
             toSuccess(action),
             toError(action),
             toReset(action)
         ];
 
-        expect(createMetaActionTypes(action)).toEqual(metaActions);
+        const metaActions = createMetaActionTypes([action]);
+
+        expect(metaActions).toEqual(mockedMetaActions);
+        expect(metaActions).toEqual(createMetaActionTypes(action));
     });
 });
 
