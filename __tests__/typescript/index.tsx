@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Provider, Store } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import axios from 'axios';
-import { cond } from 'ramda';
+import { cond, path } from 'ramda';
 import * as M from '../../index';
 import configureStore from './store';
 
@@ -30,6 +30,9 @@ M.passwordConfirm();
 const meta = M.createMetaReducer({ get: ACTION });
 const fullMeta = M.createMetaReducer({ get: ACTION, post: ACTION, put: ACTION, delete: ACTION });
 const metaActions = M.createMetaActionTypes(ACTION);
+
+const storeById = path(['requestAction', 'payload']);
+const listReducer = M.createListReducer([M.toSuccess(ACTION)], storeById, meta);
 
 const mail = M.EMAIL;
 

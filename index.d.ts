@@ -121,6 +121,8 @@ interface IMetaReducer {
     delete: IMeta
 }
 
+export function createListReducer(take: string[], storeBy: <A>(action: A) => string, reducer: <S>(state: S, action: Action) => S):
+    <S>(state: S, action: Action) => S;
 export function createMetaReducer(actions: IMetaActionsDescription):
     <S>(state: S, action: Action) => S & IMetaReducer;
 export function createMetaActionTypes(actionType: string): string[];
